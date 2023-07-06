@@ -1,0 +1,258 @@
+@import url('https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;700&display=swap');
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Hind', sans-serif;
+}
+#navbar
+{
+    z-index: 999;
+}
+.custom-dropdown
+{
+    position: relative;
+}
+#custom-dropdown-menu
+{
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    top: calc(100% + .75rem);
+    left: -70px;
+    transition: all 0.5s ease;
+}
+#custom-dropdown-menu.active
+{
+    background-color: silver;
+    opacity: 1;
+    pointer-events: auto;
+    transition: all 0.5s ease;
+}
+.custom-dropdown-item 
+{
+    cursor: pointer;
+    border: 1px solid white;
+    color: white;
+    width: 170px;
+    height: 50px;
+}
+#login_register_modal
+{
+    opacity: 0;
+    color: white;
+    transform: translateX(-100%);
+}
+#login_register_modal.active
+{
+    animation: slide 0.3s forwards;
+}
+#login_register_modal.unactive
+{
+    animation: unslide 0.3s forwards;
+}
+#close_register
+{
+    cursor: pointer;
+}
+.c-form
+{
+    border: 1px solid white;
+    padding: 2rem;
+    width: 100%;
+    border-radius: 5px;
+}
+.c-form input
+{
+    width: 100%;
+    padding: 10px;
+}
+#logo
+{
+    font-family: 'Caveat', cursive;
+    font-weight: bold;
+    color: white;
+}
+.custom-modal
+{
+    backdrop-filter: blur(5px);
+}
+#reset-password-modul
+{
+    backdrop-filter: blur(7px);
+}
+.inputs
+{
+    padding: 10px;
+    background-color: black;
+    border: 1px solid white;
+    border-radius: 6px;
+}
+.inputs input 
+{
+    border: 5px;
+}
+.quote
+{
+    width: 100%;
+    display: flex;
+    align-items: start;
+    text-align: center;
+    justify-content: center;
+    padding: 15px 5px 0px 5px;
+    border: 1px solid white;
+    flex-direction: column;
+    margin-top: 10px;
+    color: white;
+    background-color: black;
+}
+#quote_text
+{
+    width: 400px;
+    height: 200px;
+    padding: 10px;
+}
+#signature
+{
+    font-family: 'Caveat', cursive;
+}
+.custom-button
+{
+    z-index: 999;
+    position: relative;
+    background-color: black;
+    border: 1px solid white;
+    color: white;
+    padding: 10px;
+    transition: all 0.3s ease;
+}
+.custom-button:hover
+{
+    color: black;
+    transition: all 0.3s ease;
+}
+.custom-button::before
+{
+    z-index: -1;
+    content: "";
+    background-color: white;
+    width: 0%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: all 0.3s ease;
+}
+.custom-button:hover::before
+{
+    width: 100%;
+    transition: all 0.3s ease;
+}
+.delete
+{
+    margin-bottom: 10px;
+}
+#load 
+{
+    display: block;
+    height: 25px;
+    width: 25px;
+    background-color: white;
+    animation: load 1s infinite;
+}
+.filter 
+{
+    padding: 5px;
+    border-radius: 3px;
+    background-color: rgba(255, 255, 255, 0.7);
+    color: white;
+}
+.intro_text
+{
+    animation: intro 1s forwards;
+}
+.dot 
+{
+    background-color: white;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+}
+#dot-1
+{
+    animation: dot_anim 1s infinite;
+}
+#dot-2
+{
+    animation: dot_anim 1.3s infinite;
+}
+#dot-3
+{
+    animation: dot_anim 1.6s infinite;
+}
+.fa-arrow-up
+{
+    cursor: pointer;
+}
+@keyframes slide
+{
+    0%
+    {
+        transform: translateX(-100);
+    }
+    100%
+    {
+        opacity: 100;
+        transform: translateX(0%);
+    }
+}
+@keyframes unslide
+{
+    0%
+    {
+        opacity: 100;
+        transform: translateX(0);
+    }
+    100%
+    {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+}
+@keyframes load 
+{
+    0%
+    {
+        rotate: 0deg;
+    }
+    100%
+    {
+        rotate: 360deg;
+    }
+}
+@keyframes intro
+{
+    0%
+    {
+        transform: translateY(0px);
+        opacity: 0;
+    }
+    100%
+    {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+@keyframes dot_anim
+{
+    0%
+    {
+        opacity: 0.3;
+    }
+    100%
+    {
+        opacity: 1;
+    }
+}

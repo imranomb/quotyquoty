@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="/favico.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<body class="bg-black">
+    <div id="navbar" class="d-flex w-100 justify-content-between align-items-center px-3 py-2 bg-black">
+        <h2 id="logo">QuotyQuoty</h2>
+        <div id="buttons" class="buttons d-flex gap-2">
+            <button id="login_register" type="button" class="form_btn custom-button">Login/Register</button>
+        </div>
+        <div id="login_buttons" class="buttons d-flex gap-2 align-items-center">
+            <button id="admin_panel" type="button" class="custom-button" data-form="admin">ADMIN</button>
+            <div class="custom-dropdown">
+                <a href="#"><i id="profile" class="fa-solid fa-user fs-2" style="color: #ffffff;"></i></a>
+                <div id="custom-dropdown-menu">
+                    <div id="profile_panel" class="custom-dropdown-item d-flex text-center align-items-center justify-content-center">
+                        <span>Profile</span>
+                    </div>
+                    <div id="log_out" class="custom-dropdown-item d-flex gap-2 align-items-center justify-content-center">
+                        <i class="fa-solid fa-door-open fs-4 text-center" style="color: #ffffff;"></i>
+                        <span>Log out</span>
+                    </div>
+                </div>
+            </div>
+            <button id="write_quote" type="button" class="custom-button" data-form="write">+ Quote</button>
+        </div>
+    </div>
+    <div class="container filters d-flex w-100 align-items-center justify-content-start gap-2">
+        <span class="text-white">FILTER BY:</span>
+        <button class="filter newest" style="background-color: silver;">Newest</button>
+        <button class="filter" style="background-color: transparent;">Most voted</button>
+    </div>
+    <div id="login_register_modal" class="unactive min-vh-100 fixed-top bg-black w-100 overflow-auto">
+        <div class="container h-100">
+            <div class="row h-100">
+                <div class="col-md-6 d-flex align-items-center justify-content-start">
+                    <div class="c-form d-flex flex-column gap-2">
+                        <div class="d-flex justify-content-between">
+                            <h2>LOGIN</h2>
+                            <h2 id="close_register">X</h2>
+                        </div>
+                        <label for="username">Username: </label>
+                        <input type="text" id="login_username"/>
+                        <label for="login_password">Password: </label>
+                        <input type="password" id="login_password"/>
+                        <button id="login_button" type="button" class="btn btn-success">Login</button>
+                        <button id="resetPassword_modal">Reset password</button>
+                    </div>
+                </div>
+                <div class="col-md-6 d-flex align-items-center justify-content-start">
+                    <div class="c-form d-flex flex-column gap-2">
+                        <h2>Register</h2>
+                        <label for="username">Username: </label>
+                        <input type="text" id="register_username"/>
+                        <label for="username">Mail: </label>
+                        <input type="mail" id="register_mail"/>
+                        <label for="password">Password: </label>
+                        <input type="password" id="register_password"/>
+                        <label for="password">Confirm password: </label>
+                        <input type="password" id="confirm_password"/>
+                        <h4 id="modal_text"></h4>
+                        <button id="register_button" type="button" class="btn btn-success">Register</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="write_modal" class="custom-modal d-none w-100 vh-100 fixed-top justify-content-center align-items-center">
+        <div class="d-flex gap-2 flex-column h-100 align-items-center justify-content-center">
+                <label for="quote_text">Quote:</label>
+                <textarea id="quote_text"></textarea>
+                <div class="button">
+                    <button id="post_button" type="button" class="btn btn-success">Post</button>
+                    <button type="button" class="close_button btn btn-danger">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="hero" class="container d-flex flex-column align-items-center justify-content-center">
+    </div>
+    <div id="reset-password-modul" class="d-none fixed-top min-vh-100 w-100 d-flex align-items-center justify-content-center">
+        <div class="info gap-2 d-flex flex-column align-items-center justify-content-center bg-black p-5 border-secondary rounded">
+            <span class="text-white">Type your username: </span>
+            <input type="text" id="username_txt">
+            <button onclick="passwordReset()">RESET</button>
+        </div>
+    </div>
+    <!-- <div id="intro" class="d-flex flex-column w-100 align-items-center justify-content-center fixed-top vh-100 bg-black">
+        <h2 class="fs-1 text-white intro_text">Quotify</h2>
+        <div class="d-flex gap-2">
+            <span id="dot-1" class="dot"></span>
+            <span id="dot-2" class="dot"></span>
+            <span id="dot-3" class="dot"></span>
+        </div>
+    </div> -->
+</body>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script src="https://kit.fontawesome.com/ca1129a0e5.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <script src="index.js"></script>
+</html>
