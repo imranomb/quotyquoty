@@ -105,10 +105,11 @@ document.getElementById("register_button").addEventListener("click", async() => 
             username: new_user.username,
             admin: new_user.admin,
         }
-        console.log(localInfo)
         localStorage.setItem("user", JSON.stringify(localInfo));
         loginCheck();
     }
+    document.getElementById("login_register_modal").classList.toggle("active");
+    document.getElementById("login_register_modal").classList.toggle("unactive");
 })
 document.addEventListener("click", e => {
     if(e.target.matches("#profile")) document.getElementById("custom-dropdown-menu").classList.toggle("active");
@@ -336,7 +337,6 @@ filters.forEach(filter_button => {
         const x = filter_button.parentElement;
         filter_button.parentElement.childNodes[3].style.backgroundColor = "transparent";
         filter_button.parentElement.childNodes[5].style.backgroundColor = "transparent";
-        console.log(x)
         if(filter_button.classList.contains("newest"))
         {
             filter = "time";
