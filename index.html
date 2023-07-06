@@ -33,19 +33,21 @@
             <button id="write_quote" type="button" class="custom-button" data-form="write">+ Quote</button>
         </div>
     </div>
+    <hr>
     <div class="container filters d-flex w-100 align-items-center justify-content-start gap-2">
         <span class="text-white">FILTER BY:</span>
         <button class="filter newest" style="background-color: silver;">Newest</button>
         <button class="filter" style="background-color: transparent;">Most voted</button>
     </div>
-    <div id="login_register_modal" class="unactive min-vh-100 fixed-top bg-black w-100 overflow-auto align-items-center justify-content-center">
+    <hr>
+    <div id="login_register_modal" class="d-flex unactive min-vh-100 fixed-top bg-black w-100 align-items-center justify-content-center">
         <div class="container h-100">
             <div class="row h-100">
+                <h2 id="close_register">X</h2>
                 <div class="col-md-6 d-flex align-items-center justify-content-start">
                     <div class="c-form d-flex flex-column gap-2">
                         <div class="d-flex justify-content-between">
                             <h2>LOGIN</h2>
-                            <h2 id="close_register">X</h2>
                         </div>
                         <label for="username">Username: </label>
                         <input type="text" id="login_username"/>

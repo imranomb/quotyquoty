@@ -85,6 +85,7 @@ async function addQuote(id)
         quote: accepted_req.quote,
         user: accepted_req.user,
         user__id: accepted_req.user_id,
+        votes: 0,
         time: firebase.firestore.FieldValue.serverTimestamp()
     }
     const user = await firebase.firestore().collection("users").doc(accepted_req.user_id);
